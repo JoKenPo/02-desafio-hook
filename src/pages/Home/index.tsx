@@ -26,12 +26,12 @@ const Home = (): JSX.Element => {
   const { addProduct, cart } = useCart();
 
   const cartItemsAmount = cart.reduce((sumAmount, product) => {
-    console.log(product)
+    //console.log(product)
     sumAmount[product.id] = product.amount
     return sumAmount
   }, {} as CartItemsAmount)
 
-  console.log('cartItemsAmount: ', cartItemsAmount);
+  //console.log('cartItemsAmount: ', cartItemsAmount);
 
   useEffect(() => {
     async function loadProducts() {
@@ -57,7 +57,7 @@ const Home = (): JSX.Element => {
     <ProductList>
       {products.map((product) => {
         return (
-          <li>
+          <li key={product.id}>
             <img src={product.image} alt={product.title} />
             <strong>{product.title}</strong>
             <span>{product.priceFormatted}</span>
